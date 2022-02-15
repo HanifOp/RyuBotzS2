@@ -62,7 +62,6 @@ ownername2 = setting.OwnerName2
 
 //Apikey
 ryukey = setting.RyuKey
-alphakey = setting.AlphaKey
 
 //Auto Bio & Dll
 autobio = true
@@ -624,43 +623,12 @@ _*Owner Menu*_ ☕
 _*Search Menu*_ 🔎
 ✾ ${prefix}pinterest *search*
 
-_*Cecan Menu*_ 👧
-✾ ${prefix}cecanvietnam
-✾ ${prefix}cecanmalaysia
-✾ ${prefix}cecankorea
-✾ ${prefix}cecanindonesia
-✾ ${prefix}cecanjapan
-✾ ${prefix}cecanthailand
-✾ ${prefix}cecanchina
-
-_*Asupan Menu*_ 😍
-✾ ${prefix}asupancecan
-✾ ${prefix}asupanhijaber
-✾ ${prefix}asupansantuy
-✾ ${prefix}asupanukhti
-✾ ${prefix}asupanbocil
-✾ ${prefix}asupanghea
-✾ ${prefix}asupanrika
-
 _*Nulis Menu*_ 📝
 ✾ ${prefix}nulis
 ✾ ${prefix}nuliskiri
 ✾ ${prefix}nuliskanan
 ✾ ${prefix}foliokiri
 ✾ ${prefix}foliokanan
-
-_*News Menu*_ 🌏
-✾ ${prefix}indonesianews
-✾ ${prefix}sindonews
-✾ ${prefix}kompasnews
-✾ ${prefix}cnbcnews
-✾ ${prefix}okezonenews
-✾ ${prefix}detiknews
-✾ ${prefix}dailynews
-✾ ${prefix}tribunnews
-✾ ${prefix}inews
-✾ ${prefix}cnnnews
-✾ ${prefix}bbcnews
 
 _*CMD Menu*_ ✉️
 ✾ ${prefix}addcmd *reply sticker*
@@ -676,8 +644,6 @@ _*Convert Menu*_ 💾
 ✾ ${prefix}attp *text*
 ✾ ${prefix}ttp *text*
 ✾ ${prefix}toimg *reply*
-✾ ${prefix}tourl *reply*
-✾ ${prefix}smeme *reply image & text*
 ✾ ${prefix}emoji *reply emoji*
 
 _*Anime Menu*_ ⛩️
@@ -744,7 +710,7 @@ vcard2 = 'BEGIN:VCARD\n'
 + 'VERSION:3.0\n'
 + `FN:HanifBotz\n`
 + `ORG: Creator HanifBotz ;\n`
-+ `TEL;type=CELL;type=VOICE;waid=62856482680749:62856482680749\n`
++ `TEL;type=CELL;type=VOICE;waid=6285648268074:6285648268074\n`
 + 'END:VCARD'.trim()
 Ryuu.sendMessage(from, {displayName: `CreatorNya Bot ${botname}`, vcard: vcard2}, contact, 
 { quoted: ftrol, 
@@ -1080,17 +1046,6 @@ Ryuu.sendMessage(from, buffer, image, {quoted: mek, caption: 'Nih'})
 fs.unlinkSync(ran)
 })
 break
-case 'tourl': case 'imagetorul': case 'imgtourl': case 'videotourl': case 'tolink':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-if ((isMedia && !mek.message.videoMessage || isQuotedImage || isQuotedVideo ) && args.length == 0) {
- boij = isQuotedImage || isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-owgi = await Ryuu.downloadMediaMessage(boij)
-res = await uploadImages(owgi)
-reply(res)
-} else {
-reply('kirim/reply gambar/video')
-}
-break
 case 'ttp':
 if (!c) return reply(`Teks Nya Mana Kak?\nContoh :\n${prefix}attp Hanif Botz`)
 anu1 = await getBuffer(`https://api.xteam.xyz/ttp?file&text=${c}`)
@@ -1109,23 +1064,6 @@ teks = `${emoji.images[4].url}`
 sendStickerFromUrl(from,`${teks}`)
 })
 break
-case 'stickermeme': case 'memesticker': case 'memestick': case 'stickmeme': case 'stcmeme': case 'smeme':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-if (args.length < 1) return reply(`Kirim perintah *${prefix + command}* lord`)
-try {
-if (!isQuotedImage) return reply(`Reply Gambar!`)
-reply(mess.wait)
-var teks2 = args.join(' ')
-var enmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-var media = await Ryuu.downloadMediaMessage(enmedia)
-var njay = await uploadImages(media)
-var resu = await getBuffer(`https://api.memegen.link/images/custom/-/${teks2}.png?background=${njay}`)
-Ryuu.sendMessage(from, resu, image, {caption:'Nih Kak Tinggal Jadikan Sticker', quoted: mek})
-fs.unlinkSync(media)
-} catch (e) {
-console.log(e)
-}
-break
 
 //Fitur Anime
 case 'neko': case 'waifu': case 'shinobu': case 'megumin': case 'bully': case 'cuddle': case 'cry': case 'hug': case 'awoo': case 'kiss': case 'lick': case 'pat': case 'smug': case 'bonk': case 'yeet': case 'blush': case 'smile': case 'wave': case 'highfive': case 'handhold': case 'nom': case 'bite': case 'glomp': case 'slap': case 'kill': case 'happy': case 'wink': case 'poke': case 'dance': case 'cringe':
@@ -1143,106 +1081,6 @@ displayText: `NEXT ⏩`,
 type: 1,
 },
 ]); 
-break
-
-//Fitur Cecan & Asupan
-case 'cecanvietnam':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-huft = await fetchJson(`https://api-ryu.herokuapp.com/api/cewe/vietnam?apikey=${ryukey}`)
-reply(mess.wait) 
-goo = await getBuffer(huft.result.url)
-Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
-break
-case 'cecanmalaysia':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-huft = await fetchJson(`https://api-ryu.herokuapp.com/api/cewe/malaysia?apikey=${ryukey}`)
-reply(mess.wait) 
-goo = await getBuffer(huft.result.url)
-Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
-break
-case 'cecankorea':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-huft = await fetchJson(`https://api-ryu.herokuapp.com/api/cewe/korea?apikey=${ryukey}`)
-reply(mess.wait) 
-goo = await getBuffer(huft.result.url)
-Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
-break
-case 'cecanindonesia':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-huft = await fetchJson(`https://api-ryu.herokuapp.com/api/cewe/indonesia?apikey=RyuBotz`)
-reply(mess.wait) 
-goo = await getBuffer(huft.result.url)
-Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
-break
-case 'cecanjapan':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-huft = await fetchJson(`https://api-ryu.herokuapp.com/api/cewe/japan?apikey=${ryukey}`)
-reply(mess.wait) 
-goo = await getBuffer(huft.result.url)
-Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
-break
-case 'cecanthailand':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-huft = await fetchJson(`https://api-ryu.herokuapp.com/api/cewe/thailand?apikey=${ryukey}`)
-reply(mess.wait) 
-goo = await getBuffer(huft.result.url)
-Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
-break
-case 'cecanchina':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-huft = await fetchJson(`https://api-ryu.herokuapp.com/api/cewe/china?apikey=${ryukey}`)
-reply(mess.wait) 
-goo = await getBuffer(huft.result.url)
-Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
-break
-case 'asupancecan':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-huft = await fetchJson(`https://api-ryu.herokuapp.com/api/asupan/cecan?apikey=RyuBotz`)
-reply(mess.wait) 
-goo = await getBuffer(huft.result.url)
-Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
-break
-case 'asupanhijaber':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-huft = await fetchJson(`https://api-ryu.herokuapp.com/api/asupan/hijaber?apikey=${ryukey}`)
-reply(mess.wait) 
-goo = await getBuffer(huft.result.url)
-Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
-break
-case 'asupansantuy':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-ini = await fetchJson(`https://api-ryu.herokuapp.com/api/asupan/santuy?apikey=${ryukey}`)
-reply(mess.wait) 
-buffer = await getBuffer(ini.result.url)
-Ryuu.sendMessage(from, buffer, video, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
-break
-case 'asupanukhti':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-ini = await fetchJson(`https://api-ryu.herokuapp.com/api/asupan/ukty?apikey=${ryukey}`)
-reply(mess.wait) 
-buffer = await getBuffer(ini.result.url)
-Ryuu.sendMessage(from, buffer, video, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
-break
-case 'asupanbocil':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-ini = await fetchJson(`https://api-ryu.herokuapp.com/api/asupan/bocil?apikey=${ryukey}`)
-reply(mess.wait) 
-buffer = await getBuffer(ini.result.url)
-Ryuu.sendMessage(from, buffer, video, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
-break
-case 'asupanghea':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-ini = await fetchJson(`https://api-ryu.herokuapp.com/api/asupan/ghea?apikey=${ryukey}`)
-reply(mess.wait) 
-buffer = await getBuffer(ini.result.url)
-Ryuu.sendMessage(from, buffer, video, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
-break
-case 'asupanrika':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-ini = await fetchJson(`https://api-ryu.herokuapp.com/api/asupan/rikagusriani?apikey=${ryukey}`)
-reply(mess.wait) 
-buffer = await getBuffer(ini.result.url)
-Ryuu.sendMessage(from, buffer, video, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
 break
 
 //Fitur Group
@@ -1505,148 +1343,6 @@ reply(`_video sedang diproses, silahkan tunggu beberapa saat lagi_`)
 Ryuu.sendMessage(from, ytmp4, video, {caption:`Done kak`, thumbnail:Buffer.alloc(0), quoted:mek})
 break
 
-//Fitur News
-case 'bbcnews':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-get_data = await fetchJson(`https://api-alphabot.herokuapp.com/api/news/BBCnews?type=ekonomi&apikey=${alphakey}`)
-get_data = get_data.data
-ini_tes = "*Result* :\n"
-for (var x of get_data) {
-ini_tes += `*Berita* : ${x.berita}\n`
-ini_tes += `*Berita Di Up* : ${x.berita_diupload}\n`
-ini_tes += `*Url* : ${x.berita_url}\n\n\n`
-} 
-reply(ini_tes)
-break
-case 'cnnnews':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-get_data = await fetchJson(`https://api-alphabot.herokuapp.com/api/news/CNNnews?type=ekonomi&apikey=${alphakey}`)
-get_data = get_data.data
-ini_tes = "*Result* :\n"
-for (var x of get_data) {
-ini_tes += `*Berita* : ${x.berita}\n`
-ini_tes += `*Url* : ${x.berita_url}\n`
-ini_tes += `*Thumbnail* : ${x.berita_thumb}\n\n\n`
-} 
-reply(ini_tes)
-break
-case 'inews':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-get_data = await fetchJson(`https://api-alphabot.herokuapp.com/api/news/Inews?type=ekonomi&apikey=${alphakey}`)
-get_data = get_data.data
-ini_tes = "*Result* :\n"
-for (var x of get_data) {
-ini_tes += `*Berita* : ${x.berita}\n`
-ini_tes += `*Berita Di Up* : ${x.berita_diupload}\n`
-ini_tes += `*Url* : ${x.berita_url}\n`
-ini_tes += `*Jenis* : ${x.berita_jenis}\n\n\n`
-} 
-reply(ini_tes)
-break
-case 'tribunnews':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-get_data = await fetchJson(`https://api-alphabot.herokuapp.com/api/news/TribunNews?type=sepak%20bola&apikey=${alphakey}`)
-get_data = get_data.data
-ini_tes = "*Result* :\n"
-for (var x of get_data) {
-ini_tes += `*Berita* : ${x.berita}\n`
-ini_tes += `*Berita Di Up* : ${x.berita_diupload}\n`
-ini_tes += `*Url* : ${x.berita_url}\n`
-ini_tes += `*Thumbnail* : ${x.berita_thumb}\n`
-ini_tes += `*Jenis* : ${x.berita_jenis}\n\n\n`
-} 
-reply(ini_tes)
-break
-case 'dailynews':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-get_data = await fetchJson(`https://api-alphabot.herokuapp.com/api/news/DailyNews?type=ekonomi&apikey=${alphakey}`)
-get_data = get_data.data
-ini_tes = "*Result* :\n"
-for (var x of get_data) {
-ini_tes += `*Berita* : ${x.berita}\n`
-ini_tes += `*Thumbnail* : ${x.berita_thumb}\n`
-ini_tes += `*Url* : ${x.berita_url}\n\n\n`
-} 
-reply(ini_tes)
-break
-case 'detiknews':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-get_data = await fetchJson(`https://api-alphabot.herokuapp.com/api/news/Detiknews?type=ekonomi&apikey=${alphakey}`)
-get_data = get_data.data
-ini_tes = "*Result* :\n"
-for (var x of get_data) {
-ini_tes += `*Berita* : ${x.berita}\n`
-ini_tes += `*Thumbnail* : ${x.berita_thumb}\n`
-ini_tes += `*Url* : ${x.berita_url}\n\n\n`
-} 
-reply(ini_tes)
-break
-case 'okezonenews':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-get_data = await fetchJson(`https://api-alphabot.herokuapp.com/api/news/OkezoneNews?type=ekonomi&apikey=${alphakey}`)
-get_data = get_data.data
-ini_tes = "*Result* :\n"
-for (var x of get_data) {
-ini_tes += `*Berita* : ${x.berita}\n`
-ini_tes += `*Berita Di Up* : ${x.berita_diupload}\n`
-ini_tes += `*Thumbnail* : ${x.berita_thumb}\n`
-ini_tes += `*Url* : ${x.berita_url}\n\n\n`
-} 
-reply(ini_tes)
-break
-case 'cnbcnews':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-get_data = await fetchJson(`https://api-alphabot.herokuapp.com/api/news/CNBCNews?type=ekonomi&apikey=${alphakey}`)
-get_data = get_data.data
-ini_tes = "*Result* :\n"
-for (var x of get_data) {
-ini_tes += `*Berita* : ${x.berita}\n`
-ini_tes += `*Berita Di Up* : ${x.berita_diupload}\n`
-ini_tes += `*Thumbnail* : ${x.berita_thumb}\n`
-ini_tes += `*Url* : ${x.berita_url}\n\n\n`
-} 
-reply(ini_tes)
-break
-case 'kompasnews':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-get_data = await fetchJson(`https://api-alphabot.herokuapp.com/api/news/KompasNews?type=sepak%20bola&apikey=${alphakey}`)
-get_data = get_data.data
-ini_tes = "*Result* :\n"
-for (var x of get_data) {
-ini_tes += `*Berita* : ${x.berita}\n`
-ini_tes += `*Thumbnail* : ${x.berita_thumb}\n`
-ini_tes += `*Url* : ${x.berita_url}\n`
-ini_tes += `*Berita Di Up* : ${x.berita_diupload}\n`
-ini_tes += `*Jenis* : ${x.berita_jenis}\n\n\n`
-} 
-reply(ini_tes)
-break
-case 'sindonews':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-get_data = await fetchJson(`https://api-alphabot.herokuapp.com/api/news/SindoNews?type=ekonomi&apikey=${alphakey}`)
-get_data = get_data.data
-ini_tes = "*Result* :\n"
-for (var x of get_data) {
-ini_tes += `*Berita* : ${x.berita}\n`
-ini_tes += `*Url* : ${x.berita_url}\n`
-ini_tes += `*Jenis* : ${x.berita_jenis}\n\n\n`
-} 
-reply(ini_tes)
-break
-case 'indonesianews':
-if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
-get_data = await fetchJson(`https://api-alphabot.herokuapp.com/api/news/IndozoneNews?type=ekonomi&apikey=${alphakey}`)
-get_data = get_data.data
-ini_tes = "*Result* :\n"
-for (var x of get_data) {
-ini_tes += `*Berita* : ${x.berita}\n`
-ini_tes += `*Thumbnail* : ${x.berita_thumb}\n`
-ini_tes += `*Url* : ${x.berita_url}\n`
-ini_tes += `*Berita Di Up* : ${x.berita_diupload}\n`
-ini_tes += `*Jenis* : ${x.berita_jenis}\n\n\n`
-} 
-reply(ini_tes)
-break
 //Fitur Search
 case 'pinterest':
 if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
