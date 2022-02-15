@@ -742,9 +742,9 @@ members_ids.push(mem.jid)
 }
 vcard2 = 'BEGIN:VCARD\n'
 + 'VERSION:3.0\n'
-+ `FN:RyuukaBotz\n`
-+ `ORG: Creator RyuBotzS2 ;\n`
-+ `TEL;type=CELL;type=VOICE;waid=6283891921787:6283891921787\n`
++ `FN:HanifBotz\n`
++ `ORG: Creator HanifBotz ;\n`
++ `TEL;type=CELL;type=VOICE;waid=62856482680749:62856482680749\n`
 + 'END:VCARD'.trim()
 Ryuu.sendMessage(from, {displayName: `CreatorNya Bot ${botname}`, vcard: vcard2}, contact, 
 { quoted: ftrol, 
@@ -755,7 +755,7 @@ if (!isOwner && !mek.key.fromMe) return reply(mess.only.owner)
 buttonss = [{buttonId: `${prefix}public`, buttonText: {displayText: 'PUBLIC 🌱'}, type: 1},{buttonId: `${prefix}self`, buttonText: {displayText: 'SELF 🍂'}, type: 1}]
 const buMess = {
 contentText: "SELF/PUBLIC",
-footerText: 'Silahkan Pilih Saah Satu',
+footerText: 'Silahkan Pilih Salah Satu',
 buttons: buttonss,
 headerType: 1
 }
@@ -879,7 +879,7 @@ break
 case 'sc':
 case 'script':
 if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: troli}) 
-menu = `*Info Script* 🔎\n📚 Script Made By Ryuuka Botz\n🌱 Version : 1.0.0\n📈 Last Update : 11/2/2022\n📩 Link Sc : https://youtube.com/channel/UCjxavxEQa1Wd9A4J9tOmATA\n♨️ Sumber Script : Ryuuka Botz\n\n🍁 Subscribe For More Update`
+menu = `*Info Script* 🔎\n📚 Script Made By Hanif Botz\n🌱 Version : 1.0.0\n📈 Last Update : 11/2/2022\n📩 Link Sc : https://youtube.com/channel/UC8NDSBteLaid_o0ic2yZjkg\n♨️ Sumber Script : Hanif Botz\n\n🍁 Subscribe For More Update`
 teks =`${botname} | Runtime : ${runtime(process.uptime())}\nOwner : ${ownername}`
 Ryuu.sendMessage(from, { contentText: `${menu}`, footerText: `${teks}`, buttons: [{ buttonId: `${prefix}menu`, buttonText: { displayText: 'MENU 💌' }, type: 1 },{ buttonId: `${prefix}owner`, buttonText: { displayText: 'OWNER 👤' }, type: 1 } ], headerType: 'LOCATION', locationMessage: { degreesLatitude: '', degreesLongitude: '', jpegThumbnail: fakeimage, contextInfo: {mentionedJid: [sender]}}}, 'buttonsMessage')
 break
@@ -1092,7 +1092,7 @@ reply('kirim/reply gambar/video')
 }
 break
 case 'ttp':
-if (!c) return reply(`Teks Nya Mana Kak?\nContoh :\n${prefix}attp Ryuuka Botz`)
+if (!c) return reply(`Teks Nya Mana Kak?\nContoh :\n${prefix}attp Hanif Botz`)
 anu1 = await getBuffer(`https://api.xteam.xyz/ttp?file&text=${c}`)
 Ryuu.sendMessage(from, anu1, image, {quoted: mek, caption : `${prefix}sticker`})
 break
@@ -1151,98 +1151,98 @@ if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftro
 huft = await fetchJson(`https://api-ryu.herokuapp.com/api/cewe/vietnam?apikey=${ryukey}`)
 reply(mess.wait) 
 goo = await getBuffer(huft.result.url)
-Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Ryuuka Botz'})
+Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
 break
 case 'cecanmalaysia':
 if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
 huft = await fetchJson(`https://api-ryu.herokuapp.com/api/cewe/malaysia?apikey=${ryukey}`)
 reply(mess.wait) 
 goo = await getBuffer(huft.result.url)
-Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Ryuuka Botz'})
+Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
 break
 case 'cecankorea':
 if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
 huft = await fetchJson(`https://api-ryu.herokuapp.com/api/cewe/korea?apikey=${ryukey}`)
 reply(mess.wait) 
 goo = await getBuffer(huft.result.url)
-Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Ryuuka Botz'})
+Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
 break
 case 'cecanindonesia':
 if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
 huft = await fetchJson(`https://api-ryu.herokuapp.com/api/cewe/indonesia?apikey=RyuBotz`)
 reply(mess.wait) 
 goo = await getBuffer(huft.result.url)
-Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Ryuuka Botz'})
+Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
 break
 case 'cecanjapan':
 if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
 huft = await fetchJson(`https://api-ryu.herokuapp.com/api/cewe/japan?apikey=${ryukey}`)
 reply(mess.wait) 
 goo = await getBuffer(huft.result.url)
-Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Ryuuka Botz'})
+Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
 break
 case 'cecanthailand':
 if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
 huft = await fetchJson(`https://api-ryu.herokuapp.com/api/cewe/thailand?apikey=${ryukey}`)
 reply(mess.wait) 
 goo = await getBuffer(huft.result.url)
-Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Ryuuka Botz'})
+Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
 break
 case 'cecanchina':
 if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
 huft = await fetchJson(`https://api-ryu.herokuapp.com/api/cewe/china?apikey=${ryukey}`)
 reply(mess.wait) 
 goo = await getBuffer(huft.result.url)
-Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Ryuuka Botz'})
+Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
 break
 case 'asupancecan':
 if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
 huft = await fetchJson(`https://api-ryu.herokuapp.com/api/asupan/cecan?apikey=RyuBotz`)
 reply(mess.wait) 
 goo = await getBuffer(huft.result.url)
-Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Ryuuka Botz'})
+Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
 break
 case 'asupanhijaber':
 if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
 huft = await fetchJson(`https://api-ryu.herokuapp.com/api/asupan/hijaber?apikey=${ryukey}`)
 reply(mess.wait) 
 goo = await getBuffer(huft.result.url)
-Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Ryuuka Botz'})
+Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
 break
 case 'asupansantuy':
 if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
 ini = await fetchJson(`https://api-ryu.herokuapp.com/api/asupan/santuy?apikey=${ryukey}`)
 reply(mess.wait) 
 buffer = await getBuffer(ini.result.url)
-Ryuu.sendMessage(from, buffer, video, {quoted: ftrol, caption: 'Succes By : © Ryuuka Botz'})
+Ryuu.sendMessage(from, buffer, video, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
 break
 case 'asupanukhti':
 if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
 ini = await fetchJson(`https://api-ryu.herokuapp.com/api/asupan/ukty?apikey=${ryukey}`)
 reply(mess.wait) 
 buffer = await getBuffer(ini.result.url)
-Ryuu.sendMessage(from, buffer, video, {quoted: ftrol, caption: 'Succes By : © Ryuuka Botz'})
+Ryuu.sendMessage(from, buffer, video, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
 break
 case 'asupanbocil':
 if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
 ini = await fetchJson(`https://api-ryu.herokuapp.com/api/asupan/bocil?apikey=${ryukey}`)
 reply(mess.wait) 
 buffer = await getBuffer(ini.result.url)
-Ryuu.sendMessage(from, buffer, video, {quoted: ftrol, caption: 'Succes By : © Ryuuka Botz'})
+Ryuu.sendMessage(from, buffer, video, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
 break
 case 'asupanghea':
 if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
 ini = await fetchJson(`https://api-ryu.herokuapp.com/api/asupan/ghea?apikey=${ryukey}`)
 reply(mess.wait) 
 buffer = await getBuffer(ini.result.url)
-Ryuu.sendMessage(from, buffer, video, {quoted: ftrol, caption: 'Succes By : © Ryuuka Botz'})
+Ryuu.sendMessage(from, buffer, video, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
 break
 case 'asupanrika':
 if (!isUser) return sendButRegis(from, daftar1, daftar2, daftar3, { quoted: ftrol})
 ini = await fetchJson(`https://api-ryu.herokuapp.com/api/asupan/rikagusriani?apikey=${ryukey}`)
 reply(mess.wait) 
 buffer = await getBuffer(ini.result.url)
-Ryuu.sendMessage(from, buffer, video, {quoted: ftrol, caption: 'Succes By : © Ryuuka Botz'})
+Ryuu.sendMessage(from, buffer, video, {quoted: ftrol, caption: 'Succes By : © Hanif Botz'})
 break
 
 //Fitur Group

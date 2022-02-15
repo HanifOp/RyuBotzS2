@@ -26,7 +26,7 @@ nocache('./Ryuu.js', module => console.log(`${module} telah di update!`))
 const starts = async (Ryuu = new WAConnection()) => {
 Ryuu.logger.level = 'warn'
 Ryuu.version = [2, 2143, 3]
-Ryuu.browserDescription = [ 'RyuBotz', 'Safari', '3.0' ]
+Ryuu.browserDescription = [ 'HanifBotz', 'Safari', '3.0' ]
 Ryuu.on('qr', () => {
   console.log(color('[','white'), color('!','red'), color(']','white'), color(' Scan Qrnya Kak Waktu Cuma 20 Detik !!'))
 })
